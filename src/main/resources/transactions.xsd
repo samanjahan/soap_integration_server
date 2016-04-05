@@ -1,0 +1,127 @@
+<xs:schema attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="transactions" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="transactions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Transaction" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded" minOccurs="0">
+                            <xs:element type="xs:string" name="Store"/>
+                            <xs:element type="xs:string" name="Terminal"/>
+                            <xs:element type="xs:short" name="TransactionNo"/>
+                            <xs:element name="Header">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="ReceiptNo"/>
+                                        <xs:element type="xs:byte" name="Staff"/>
+                                        <xs:element type="xs:dateTime" name="Date"/>
+                                        <xs:element type="xs:byte" name="Type"/>
+                                        <xs:element type="xs:float" name="GrossAmount"/>
+                                        <xs:element type="xs:float" name="DiscountAmount"/>
+                                        <xs:element type="xs:float" name="TotalDiscount"/>
+                                        <xs:element type="xs:float" name="PaymentAmount"/>
+                                        <xs:element type="xs:string" name="CurrencyInfo"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="SalesEntries">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="SalesEntry" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:short" name="LineNo"/>
+                                                    <xs:element type="xs:int" name="ItemNo"/>
+                                                    <xs:element type="xs:float" name="NetAmount"/>
+                                                    <xs:element type="xs:float" name="VATAmount"/>
+                                                    <xs:element type="xs:float" name="Quantity"/>
+                                                    <xs:element type="xs:string" name="Unit"/>
+                                                    <xs:element type="xs:float" name="Price"/>
+                                                    <xs:element type="xs:byte" name="LineDiscounted"/>
+                                                    <xs:element type="xs:float" name="DiscountAmount"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Payments">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="PaymentEntry" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:int" name="LineNo"/>
+                                                    <xs:element type="xs:byte" name="TenderType"/>
+                                                    <xs:element type="xs:float" name="AmountTendered"/>
+                                                    <xs:element type="xs:byte" name="ChangeLine"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Infocodes">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="InfocodeEntry">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:byte" name="TransactionType"/>
+                                                    <xs:element type="xs:string" name="Infocode"/>
+                                                    <xs:element type="xs:string" name="SubCode"/>
+                                                    <xs:element type="xs:string" name="Information"/>
+                                                    <xs:element type="xs:string" name="No"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Discounts">
+                                <xs:complexType mixed="true">
+                                    <xs:sequence>
+                                        <xs:element name="DiscountEntry" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:byte" name="OfferType"/>
+                                                    <xs:element type="xs:string" name="OfferNo"/>
+                                                    <xs:element type="xs:float" name="DiscountAmount"/>
+                                                    <xs:element type="xs:short" name="LineNo"/>
+                                                    <xs:element type="xs:string" name="MemberAttribute"/>
+                                                    <xs:element type="xs:string" name="MemberAttributeValue"/>
+                                                    <xs:element type="xs:float" name="Points"/>
+                                                    <xs:element type="xs:byte" name="SeqCode"/>
+                                                    <xs:element type="xs:byte" name="SeqFunction"/>
+                                                    <xs:element type="xs:string" name="TrackingNo"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
